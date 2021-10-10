@@ -8,13 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let layer_1 = CAEmitterLayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //
     }
-
 
 }
 

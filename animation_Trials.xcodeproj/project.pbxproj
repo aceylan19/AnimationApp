@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F258050A2713603A00EBC5A1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25805092713603A00EBC5A1 /* SecondViewController.swift */; };
+		F258050C2713608400EBC5A1 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F258050B2713608400EBC5A1 /* ThirdViewController.swift */; };
 		F288E543270C0D1C0091C44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288E542270C0D1C0091C44B /* AppDelegate.swift */; };
 		F288E545270C0D1C0091C44B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288E544270C0D1C0091C44B /* SceneDelegate.swift */; };
 		F288E547270C0D1C0091C44B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288E546270C0D1C0091C44B /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F25805092713603A00EBC5A1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F258050B2713608400EBC5A1 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		F288E53F270C0D1C0091C44B /* animation_Trials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animation_Trials.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F288E542270C0D1C0091C44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F288E544270C0D1C0091C44B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				F288E54B270C0D1D0091C44B /* Assets.xcassets */,
 				F288E54D270C0D1D0091C44B /* LaunchScreen.storyboard */,
 				F288E550270C0D1D0091C44B /* Info.plist */,
+				F25805092713603A00EBC5A1 /* SecondViewController.swift */,
+				F258050B2713608400EBC5A1 /* ThirdViewController.swift */,
 			);
 			path = animation_Trials;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F258050A2713603A00EBC5A1 /* SecondViewController.swift in Sources */,
 				F288E547270C0D1C0091C44B /* ViewController.swift in Sources */,
+				F258050C2713608400EBC5A1 /* ThirdViewController.swift in Sources */,
 				F288E543270C0D1C0091C44B /* AppDelegate.swift in Sources */,
 				F288E545270C0D1C0091C44B /* SceneDelegate.swift in Sources */,
 			);
