@@ -70,6 +70,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RcP-eZ-qSu"/>
+                    <connections>
+                        <outlet property="gameButton" destination="MTx-Dw-zUv" id="bZi-ar-icv"/>
+                        <outlet property="headLabel" destination="JVU-qi-Or6" id="mjd-L1-DBL"/>
+                        <outlet property="settingsButton" destination="9Rq-nc-Tfv" id="BWO-7h-vvq"/>
+                        <outlet property="startPageImage" destination="GK0-PM-dcr" id="fL0-NI-vSL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -31,6 +31,10 @@ class SecondViewController: UIViewController {
     // onPageTimer is created to limit elapsed time of each game.
     var onPageTimer = Timer()
     var counter = 0
+    var hideTimer = Timer()
+    
+    // ericArray is created to do disappearing animation.
+    var ericArray = [UIImageView]()
     
     
     override func viewDidLoad() {
@@ -49,6 +53,8 @@ class SecondViewController: UIViewController {
         eric7.isUserInteractionEnabled = true
         eric8.isUserInteractionEnabled = true
         eric9.isUserInteractionEnabled = true
+        
+        ericArray = [eric1, eric2, eric3, eric4, eric5, eric6, eric7, eric8, eric9]
         
         // UITapGestureRecognizer is added to add action on each click on images.
         let record1 = UITapGestureRecognizer(target: self, action: #selector(increaseScore))
@@ -76,6 +82,10 @@ class SecondViewController: UIViewController {
         counter = 15
         timerLabel.text = String(counter)
         onPageTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(hideEric), userInfo: nil, repeats: true)
+        
+        // calling hideEric function.
+        hideEric()
     }
     
     // increaseScore finction is created to increase score vlaue after each user action on images.
@@ -90,6 +100,7 @@ class SecondViewController: UIViewController {
         
         if counter == 0{
             onPageTimer.invalidate()
+            hideTimer.invalidate()
             
             let alertMessage = UIAlertController(title: "Time is Up", message: "Do you wanna play again?", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
@@ -101,6 +112,16 @@ class SecondViewController: UIViewController {
         }
             
     }
+    
+    @objc func hideEric(){
+        
+        for eric in ericArray{
+            eric.isHidden = true
+        }
+        let random = Int(arc4random_uniform(UInt32(ericArray.count-1)))
+        ericArray[random].isHidden = false
+    }
+    
     }
     
 

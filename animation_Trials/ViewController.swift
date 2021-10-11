@@ -8,8 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let layer_1 = CAEmitterLayer()
 
+    @IBOutlet weak var headLabel: UILabel!
+    @IBOutlet weak var startPageImage: UIImageView!
+    @IBOutlet weak var gameButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
