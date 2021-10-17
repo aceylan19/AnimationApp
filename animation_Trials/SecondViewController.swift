@@ -27,6 +27,7 @@ class SecondViewController: UIViewController {
     
     // trackScore variable is defined to count the score.
     var trackScore = 0
+    var highScore = 0
     
     // onPageTimer is created to limit elapsed time of each game.
     var onPageTimer = Timer()
@@ -42,6 +43,17 @@ class SecondViewController: UIViewController {
         
         // The current trackScore value will be displayed as a score value.
         scoreLabel.text = "Score: \(trackScore)"
+        
+        let savedScore = UserDefaults.standard.object(forKey: "highScore")
+        
+        if savedScore == nil{
+            highScore = 0
+            highScoreLabel.text = "HighScore: \(highScore)"
+        } else {
+            highScore = savedScore as! Int
+            highScoreLabel.text = "HighScore: \(highScore)"
+
+        }
         
         // Images became responsive for user's interaction.
         eric1.isUserInteractionEnabled = true
@@ -79,10 +91,10 @@ class SecondViewController: UIViewController {
         eric9.addGestureRecognizer(record9)
         
         // Timer operations.
-        counter = 15
+        counter = 10
         timerLabel.text = String(counter)
         onPageTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-        hideTimer = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(hideEric), userInfo: nil, repeats: true)
+        hideTimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(hideEric), userInfo: nil, repeats: true)
         
         // calling hideEric function.
         hideEric()
@@ -93,21 +105,41 @@ class SecondViewController: UIViewController {
         trackScore += 1
         scoreLabel.text = "Score: \(trackScore)"
     }
-        
+    //HighScore Operations - Add a new highscore value.
+
+    
+    
+    
+    // Alert Operations
     @objc func countDown(){
         counter -= 1
         timerLabel.text = "\(counter)"
         
         if counter == 0{
+            if self.trackScore > self.highScore {
+                self.highScore = self.trackScore
+                highScoreLabel.text = "HighScore: \(self.highScore)"
+                UserDefaults.standard.set(self.highScore, forKey: "highScore")
+            }
             onPageTimer.invalidate()
             hideTimer.invalidate()
             
             let alertMessage = UIAlertController(title: "Time is Up", message: "Do you wanna play again?", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            //let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) { <#UIAlertAction#> in}
+            let replayButton = UIAlertAction(title: "Replay", style: UIAlertAction.Style.default) {
+                (UIAlertAction) in
+                
+                self.trackScore = 0
+                self.scoreLabel.text = "Score: \(self.trackScore)"
+                self.counter = 10
+                self.timerLabel.text = "\(self.counter)"
+                
+                self.onPageTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countDown), userInfo: nil, repeats: true)
+                self.hideTimer = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(self.hideEric), userInfo: nil, repeats: true)
+            }
             
             alertMessage.addAction(okButton)
-            //alertMessage.addAction(replayButton)
+            alertMessage.addAction(replayButton)
             self.present(alertMessage, animated: true, completion: nil)
         }
             

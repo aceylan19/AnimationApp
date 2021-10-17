@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,7 +36,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Catch Me!"/>
                                 <connections>
-                                    <segue destination="o7Q-Ty-Nep" kind="show" id="VzC-pG-ae8"/>
+                                    <action selector="gameButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wjP-1J-suN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rq-nc-Tfv">
@@ -48,7 +47,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Settings "/>
                                 <connections>
-                                    <segue destination="THm-Uw-wca" kind="show" id="Czb-u1-PNG"/>
+                                    <action selector="settingsButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hP3-6d-Z1i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -75,6 +74,8 @@
                         <outlet property="headLabel" destination="JVU-qi-Or6" id="mjd-L1-DBL"/>
                         <outlet property="settingsButton" destination="9Rq-nc-Tfv" id="BWO-7h-vvq"/>
                         <outlet property="startPageImage" destination="GK0-PM-dcr" id="fL0-NI-vSL"/>
+                        <segue destination="o7Q-Ty-Nep" kind="show" identifier="to2ndPage" id="qLp-8J-Aux"/>
+                        <segue destination="THm-Uw-wca" kind="show" identifier="to3rdPage" id="L7y-L1-uKr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -96,22 +97,60 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-2t-XoB">
-                                <rect key="frame" x="20" y="153" width="374" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio-Game: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjC-KT-zOE">
+                                <rect key="frame" x="20" y="134" width="374" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="khk-0k-ILy">
-                                    <children>
-                                        <command title="Kenny" id="vsp-px-QHb"/>
-                                        <command title="Eric" id="hQ1-1L-EAs"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Catch The "/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pqb-kM-DC2">
+                                <rect key="frame" x="18" y="187" width="378" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio-Animation: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TG-OE-xFs">
+                                <rect key="frame" x="20" y="386" width="374" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xNc-kr-OAJ">
+                                <rect key="frame" x="18" y="439" width="378" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMx-cJ-2z2">
+                                <rect key="frame" x="20" y="224" width="374" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Start / Stop"/>
+                                <connections>
+                                    <action selector="soundButtonTapped:" destination="THm-Uw-wca" eventType="touchUpInside" id="QuL-Hc-RP7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l91-3v-3ls">
+                                <rect key="frame" x="20" y="476" width="374" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Start / Stop"/>
+                                <connections>
+                                    <action selector="effectButtonTapped:" destination="THm-Uw-wca" eventType="touchUpInside" id="vhw-mZ-Z4f"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CU1-h8-yam"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="xcK-Mj-BK6"/>
+                    <connections>
+                        <outlet property="charEffectSlider" destination="xNc-kr-OAJ" id="Pyt-xB-Vkw"/>
+                        <outlet property="charVoiceEffect" destination="0TG-OE-xFs" id="Uul-cL-I11"/>
+                        <outlet property="effectStartStop" destination="l91-3v-3ls" id="WIw-1f-2mw"/>
+                        <outlet property="gameMusicSlider" destination="pqb-kM-DC2" id="OUg-2K-4rR"/>
+                        <outlet property="gameSoundtracktLabel" destination="XjC-KT-zOE" id="3oD-vW-7wb"/>
+                        <outlet property="soundStartStop" destination="QMx-cJ-2z2" id="zR7-5M-8mc"/>
+                        <outlet property="view" destination="QMx-cJ-2z2" id="Umg-3T-dvM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E54-em-XuC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

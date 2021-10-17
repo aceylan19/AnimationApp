@@ -18,5 +18,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    @IBAction func gameButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "to2ndPage", sender: nil)
+    }
+    
+    
+    @IBAction func settingsButtonClicked(_ sender: Any) {
+        performSegue(withIdentifier: "to3rdPage", sender: nil)
+    }
 }
 
